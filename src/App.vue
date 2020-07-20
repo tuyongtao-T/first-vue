@@ -1,10 +1,10 @@
 <template >
-  <div>
-    <First v-for="(item,index) in persons" :age="item.age" :name="item.name" :key="index"/>
-    <input type="text" v-model="newPerson.name">
-    <input type="text" v-model="newPerson.age">
-    <button @click="addPerson"> 添加</button>
+  <div class="tyt">
+    <input type="text" v-model="newPerson.name" placeholder="姓名" class="put">
+    <input type="text" v-model="newPerson.age" placeholder="年龄" class="put" @keyup.enter="addPerson">
+     <button @click="addPerson"> 添加</button>
     <button @click="delPerson">删除</button>
+    <First v-for="(item,index) in persons" :age="item.age" :name="item.name" :key="index"/>
   </div>
 </template>
 
@@ -20,16 +20,20 @@ export default {
          ],
          newPerson:{
            name: '',
-           age:0
+           age:''
          }
       }
     },
     methods: {
       addPerson(){
-          this.persons.push(this.newPerson)
+          this.persons.push({
+            name: this.newPerson.name,
+            age: this.newPerson.age
+          })
       },
       delPerson(){
-        this.persons.pop()
+        this.persons.pop();
+        
       }
     },
     components: {
@@ -38,6 +42,15 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="less">
+.tyt{
+  padding: 40px;
+  background: pink;
+  margin: 40 auto;
+  .put {
+    width: 50px;
+    height: 25px;
+    margin-right: 11px;
+  }
+}
 </style>

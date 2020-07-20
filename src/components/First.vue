@@ -1,3 +1,4 @@
+
 <template>
     <div class="First">
         <h6>你好，现在是星期{{new Date().getDay()}}</h6>
@@ -6,7 +7,7 @@
 </template>
 
 <script>
-
+import A from './A'
 export default {
     props: {
         age:{
@@ -16,6 +17,9 @@ export default {
             type: String,
         }
     },
+    components: {
+        A
+    }
 }
 </script>
 
